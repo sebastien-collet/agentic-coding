@@ -1,0 +1,44 @@
+[project]
+name = "travel-expense-agent"
+version = "0.1.0"
+description = "Assistant RAG Travel & Expense avec LangGraph, Streamlit et Phoenix"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "arize-phoenix>=11.0",
+    "httpx>=0.27",
+    "langchain-chroma>=0.2",
+    "langchain-openai>=0.3",
+    "langchain-text-splitters>=0.3",
+    "langgraph>=0.2",
+    "openinference-instrumentation-langchain>=0.1",
+    "python-dotenv>=1.0",
+    "streamlit>=1.40",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1",
+    "pytest>=8.3",
+    "ruff>=0.11",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP"]
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "basic"
+exclude = [".venv", "build", "dist"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+pythonpath = ["."]
